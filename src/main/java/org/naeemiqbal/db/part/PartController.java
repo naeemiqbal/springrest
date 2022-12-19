@@ -46,6 +46,8 @@ public class PartController {
 		return repo.findById(id).map(itm -> {
 			itm.setPartCode(ppart.getPartCode());
 			itm.setPartName(ppart.getPartName());
+			itm.setPrice(ppart.getPrice());
+			itm.setCreated(ppart.getCreated());
 			return repo.save(itm);
 		}).orElseGet(() -> {
 			ppart.setPartId(id);

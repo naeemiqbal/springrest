@@ -2,7 +2,6 @@ package org.naeemiqbal;
 
 import java.util.logging.Logger;
 
-import org.springframework.cloud.aws.messaging.listener.annotation.SqsListener;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,8 +23,8 @@ public class Send2Q {
 	 * str.toString(); }
 	 */
 
-	@SqsListener("https://sqs.us-east-2.amazonaws.com/039859352486/MyQueue")
+/*	@SqsListener("https://sqs.us-east-2.amazonaws.com/039859352486/MyQueue")
 	public void listen(String message) {
 		LOG.info("!!!! received message " + message);
-	}
+	}*/
 }
