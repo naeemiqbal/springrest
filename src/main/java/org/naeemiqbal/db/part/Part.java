@@ -67,10 +67,4 @@ public class Part {
 		this.price = price;
 		this.created= new Date();
 	}
-
-	
-	
-	
-	
-	
 }
