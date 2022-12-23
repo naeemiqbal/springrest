@@ -1,0 +1,32 @@
+@charset "ISO-8859-1";
+
+table, th, td {
+	border: 1px solid grey;
+	border-collapse: collapse;
+	padding: 5px;
+}
+
+thead tr {
+	background-color: #c1c1c1;
+	font-weight: bold;
+}
+
+
+tbody tr:nth-child(even) {
+	background-color: #f1f1f1;
+}
+
+tbody tr:nth-child(odd) {
+	background-color: #ffffff;
+}
+
+tbody tr:hover {
+	background-color: #ffff99;
+}
+
+div {
+	padding: 10px;
+}
+
+input {
+display: block;}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Stores</title>
+<script type="text/javascript" src="nmiUtils.js"></script>
+<link type="text/css" href="nmiStyles.css" rel="stylesheet" >
+<style type="text/css" src="nmiStyles.css"  href="nmiStyles.css" ></style>
+
+<script>
+	window.addEventListener("DOMContentLoaded", loader);
+
+	function loader() {
+		var req = new XMLHttpRequest();
+		req.open("GET", "/stores");
+		req.onreadystatechange = resp;
+		req.send();
+	}
+
+	function resp(r, b, c) {
+		var t, s;
+		if (r) {
+			t = r.target;
+			if (t.readyState === 3 /*|| r.readyState === LOADING*/) {
+				s = JSON.parse(t.responseText);
+				document.getElementsByName("list")[0].innerHTML = getTable(s);
+				document.getElementsByName("record")[0].innerHTML = getRecord(s);
+				console.log(s);
+			}
+			console.log(t);
+		}
+	}
+</script>
+</head>
+
+<body>
+	<h1>Stores</h1>
+	<div class="list" name="list">List</div>
+	<div class="record" name="record">Record</div>
+	<h6>Updated 12/23 @ 1501</h6>
+</body>
+</html>
