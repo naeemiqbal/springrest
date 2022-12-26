@@ -9,12 +9,23 @@
 
 <script>
 	window.addEventListener("DOMContentLoaded", loader);
-
+	
 	function loader() {
 		var req = new XMLHttpRequest();
 		req.open("GET", "/stores");
 		req.onreadystatechange = resp;
 		req.send();
+                let bd = document.getElementsByTagName('body');
+                /*if (bd)        
+                    bd.addEventListener('load', addEvents);*/
+                addEvents();
+                document.addEventListener('change', (event) => {
+    // Make sure, that you're receiving event from a correct element
+    if (event.target.name === 'list') {
+        addEvents();
+    }
+});
+                
 	}
 
 	function resp(r, b, c) {
@@ -26,9 +37,21 @@
 				document.getElementsByName("list")[0].innerHTML = getTable(s);
 				document.getElementsByName("record")[0].innerHTML = getRecord(s);
 				console.log(s);
+				//document.getElementsByTagName("tr").addEventListener('click', loadRow);                                
 			}
 			console.log(t);
 		}
+	}
+	
+	function addEvents(a,b, c) {
+            let tbl = document.querySelector("[name=listTable]");
+/*            if (!tbl)              tbl=document.querySelector(".list");*/            
+            if (tbl) {
+                for (const currentRow of tbl.rows) {
+                    currentRow.onclick = loadRow;
+                }
+            }
+			console.log(a + " "  + b);
 	}
 </script>
 </head>
@@ -37,6 +60,7 @@
 	<h1>Stores</h1>
 	<div class="list" name="list">List</div>
 	<div class="record" name="record">Record</div>
+	<button onclick="addEvents();"  >Add Events Now!!! </button>
 	<h6>Updated 12/23 @ 1501</h6>
 </body>
 </html>

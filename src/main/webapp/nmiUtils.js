@@ -3,7 +3,7 @@
  */
 
 function getTable(data) {
-	var tbl = "<table>",
+	var tbl = "<table name='listTable'>",
 		cols = [], siz = 0;
 	if (Array.isArray(data)) {
 		let r = data[0];
@@ -26,14 +26,20 @@ function getTable(data) {
 	return tbl;
 }
 
-function getRecord(data,) {
+function getRecord(data) {
 	var frm = "<form>";
 	if (Array.isArray(data)) {
 		let r = data[0];
 		for (let col in r) {
-			frm += "<label for='" + col + "'>" + col + "</label><input name='" + col + "/><br/>";
+			frm += "<label for='" + col + "'>" + col + "</label><input name='" + col + "''/><br/>";
 		}
 	}
 	frm += "</form>";
 	return frm;
 }
+
+function loadRow(a, b, c){
+    debugger;
+    console.log(a + " "  + b);    
+}
+
