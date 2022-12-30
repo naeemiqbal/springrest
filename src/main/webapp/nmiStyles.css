@@ -1,3 +1,7 @@
+/* Naeem Iqbal Styles
+
+*/
+
 @charset "ISO-8859-1";
 
 table, th, td {
@@ -7,7 +11,7 @@ table, th, td {
 }
 
 thead tr {
-	background-color: #c1c1c1;
+	background-color:#0080ff;
 	font-weight: bold;
 }
 
@@ -21,7 +25,7 @@ tbody tr:nth-child(odd) {
 }
 
 tbody tr:hover {
-	background-color: #ffff99;
+	background-color:  #c1c1c1;
 }
 
 div {
@@ -29,4 +33,13 @@ div {
 }
 
 input {
-display: block;}
+display: block;
+width: 250px;}
+
+.delete{
+	background-color: #ff8080;
+}
+
+#save {
+  background-color: green;	
+}

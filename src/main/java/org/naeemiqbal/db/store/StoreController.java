@@ -51,7 +51,7 @@ public class StoreController {
 		return repo.findById(id).map(itm -> {
 			itm.setStoreCode(pStore.getStoreCode());
 			itm.setStoreName(pStore.getStoreName());
-			return repo.save(itm);
+			return repo.save(pStore);
 		}).orElseGet(() -> {
 			pStore.setStoreID(id);
 			return repo.save(pStore);
@@ -59,8 +59,11 @@ public class StoreController {
 	}
 
 	@DeleteMapping("/stores/{id}")
-	void deleteStore(@PathVariable Long id) {
-		repo.deleteById(id);		
+	void deleteStore(@PathVariable Long id) throws Exception {
+		if (id >10)
+			repo.deleteById(id);
+		else
+			throw new Exception("Cannot delete original records with ID 10 or lesser.");
 	}
 	
 	@PatchMapping("/stores/{id}")
