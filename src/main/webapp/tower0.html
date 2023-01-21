@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Stores</title>
+<script type="text/javascript" src="nmiUtils.js"></script>
+<link type="text/css" href="nmiStyles.css" rel="stylesheet">
+
+<script>
+
+ 	window.addEventListener("DOMContentLoaded", init);
+ 	const st=[5,4,3,2,1],
+ 	at=[],
+ 	bt=[],
+ 	N=st.length;      
+ 	
+ 	function init(){
+ 		
+ 		display();
+ 		hanoi(N, st, at, bt);
+ 	}
+ 	
+ 	function display(){
+ 		document.getElementById("at").value = at.join('');
+ 		document.getElementById("bt").value = bt.join('');
+ 		document.getElementById("st").value = st.join('');
+ 	}
+ 	
+ 	function hanoi(n, from, to, hlpr ){
+ 		var val, i=n;
+ 		if ( i >= 2 ){
+ 			val = from.pop();
+ 			hlpr.push(val);
+ 			val=from.pop();
+ 			to.push(val);
+ 			to.push(hlpr.pop()); 			
+ 		}
+ 		display();	 		
+ 	}
+	
+	
+</script>
+</head>
+
+<body>
+Tower of Hanoi
+<input id="st" />
+<input id="at" />
+<input id="bt" />
+
+
+</body>
+</html>
