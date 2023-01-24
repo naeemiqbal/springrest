@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Move Tower in Descending order</title>
+    <script >
+        window.addEventListener("DOMContentLoaded", init);
+        const CR = "\n";
+        var st, at, bt;
+
+        function init() {
+            let sol = document.getElementsByName("solve");
+            let h = document.getElementsByName("height")[0],
+                num = h.value || 5,
+                val1="";
+            for (var i = 1; i <= num; i++) {
+                val1 += CR + i;
+            }
+            document.getElementsByName("finit")[0].value = val1;
+            if (sol)
+                sol[0].addEventListener("click", solve);
+        }
+
+        function solve() {
+         //   console.log("put the meat");
+            var s = document.getElementsByName("finit")[0],
+                a = document.getElementsByName("fat")[0],
+                b = document.getElementsByName("fbt")[0],
+                sv = s.value; av = a.value, bv = b.value,
+                st = topVal(sv), at = topVal(av), bt = topVal(bv);
+                
+
+           /* if (isEmpty(av)) {
+                av = tpush(sv);
+                sv = sv.substring(1);
+            }
+            if (isEmpty(bv)) {
+                bv = tpush(sv);
+                sv = sv.substring(1);
+            }*/
+            st = topVal(sv);
+            at = topVal(av);
+            bt = topVal(bv);
+            while (st < at) {
+                av = tpush(sv);
+                sv = sv.substring(1);
+                st = topVal(sv);
+                at = topVal(av);
+            }
+            while (st < bt) {
+                bv = tpush(sv);
+                sv = sv.substring(1);
+                st = topVal(sv);
+                bt = topVal(bv);
+            }
+            s.value = sv;
+            a.value = av;
+            b.value = bv;
+            console.log("Solve end");
+        }
+
+        function tpush(str) {
+            var ret;
+            if ( !isEmpty(str) ) {
+                ret = str.at(0);
+                str = str.substring(1);
+            }
+            return ret;
+        }
+
+        function topVal(str) {
+            if (!isEmpty(str))
+                return str.at(0);
+            return 100;
+        }
+
+        function isEmpty(str) {
+            if (str && str != null && str.length > 0)
+                return false;
+            return true;
+        }
+
+    </script>
+    <style>
+        textarea { width:12px;}
+        input { background-color: beige;}
+        .atower { background-color: greenyellow;}
+        .btower { background-color: deepskyblue;}
+        input {
+            display: block;
+            padding : 5px;
+            margin: 10px;
+            border : 2px;
+        }
+    </style>
+
+</head>
+<body>
+    <input name="height" type="number" value="3" />
+    <button name="reset" >Reset</button>
+    <button name="solve" > Solve</button>
+    <input name="finit" value="12345" />
+    <input name="fat" class="atower" readonly />
+    <input name="fbt" class="btower" readonly />
+    <!--
+    <textarea name="init" cols="1" rows="5" value="12345"  >ABCDEfghij</textarea>
+    <textarea name="at" cols="1" rows="5"></textarea>
+    <textarea name="bt" cols="1" rows="5"></textarea>
+        -->
+</body>
+</html>
